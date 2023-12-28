@@ -65,5 +65,4 @@ const selectItem = (item) => {
   const selected = clothSelected[0];
 
   selectedCloth.add(selected);
-  console.log(selectedCloth.selectedItem);
 };
