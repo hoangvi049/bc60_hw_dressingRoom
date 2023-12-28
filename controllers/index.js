@@ -4,6 +4,7 @@ function getELe(id) {
 
 var data = new Data();
 let clothtList = [];
+const selectedCloth = new SelectedCloth();
 
 function getData() {
   const promise = data.fetchJSON();
@@ -51,7 +52,7 @@ const renderClothCard = (clothtList) => {
     <div class="col-3  pt-3">
     <img src="${item.imgSrc_jpg}" alt="">
     <h4>${item.name}</h4>
-    <button class="btn btn-success" onclick ="show('${item.id}')">Thử đồ</button>
+    <button class="btn btn-success" onclick ="selectItem('${item.id}')">Thử đồ</button>
   </div></div>
 
     `;
@@ -59,56 +60,10 @@ const renderClothCard = (clothtList) => {
   return content;
 };
 
-const show = (item) => {
-  // for (let i = 0; i < clothtList.length; i++) {
-  //   if (item == clothtList[i].id) {
-  //     console.log(clothtList[i]);
-  //     break;
-  //   }
-  // }
+const selectItem = (item) => {
   const clothSelected = clothtList.filter((cloth) => cloth.id == item);
   const selected = clothSelected[0];
-  let _topclothes = "";
-  let _botclothes = "";
-  let _shoes = "";
-  let _handbags = "";
-  let _necklaces = "";
-  let _hairstyle = "";
-  let _background = "";
-  switch (selected.type) {
-    case "topclothes":
-      _topclothes = selected.imgSrc_jpg;
-      break;
-    case "botclothes":
-      _botclothes = selected.imgSrc_jpg;
-      break;
-    case "shoes":
-      _shoes = selected.imgSrc_jpg;
-      break;
-    case "handbags":
-      _handbags = selected.imgSrc_jpg;
-      break;
-    case "necklaces":
-      _necklaces = selected.imgSrc_jpg;
-      break;
-    case "hairstyle":
-      _hairstyle = selected.imgSrc_jpg;
-      break;
-    case "background":
-      _background = selected.imgSrc_jpg;
-      break;
-    default:
-  }
 
-  let selectedCloth = new SelectedCloth(
-    _topclothes,
-    _botclothes,
-    _shoes,
-    _handbags,
-    _necklaces,
-    _hairstyle,
-    _background
-  );
-
-  return selectedCloth;
+  selectedCloth.add(selected);
+  console.log(selectedCloth.selectedItem);
 };

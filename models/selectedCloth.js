@@ -1,17 +1,37 @@
-function SelectedCloth(
-  _topclothes,
-  _botclothes,
-  _shoes,
-  _handbags,
-  _necklaces,
-  _hairstyle,
-  _background
-) {
-  this.topclothes = _topclothes;
-  this.botclothes = _botclothes;
-  this.shoes = _shoes;
-  this.handbags = _handbags;
-  this.necklaces = _necklaces;
-  this.hairstyle = _hairstyle;
-  this.background = _background;
+function SelectedCloth() {
+  this.selectedItem = {
+    topclothes: "",
+    botclothes: "",
+    shoes: "",
+    handbags: "",
+    necklaces: "",
+    hairstyle: "",
+    background: "",
+  };
+  this.add = (item) => {
+    switch (item.type) {
+      case "topclothes":
+        this.selectedItem.topclothes = item.imgSrc_jpg;
+        break;
+      case "botclothes":
+        this.selectedItem.botclothes = item.imgSrc_jpg;
+        break;
+      case "shoes":
+        this.selectedItem.shoes = item.imgSrc_jpg;
+        break;
+      case "handbags":
+        this.selectedItem.handbags = item.imgSrc_jpg;
+        break;
+      case "necklaces":
+        this.selectedItem.necklaces = item.imgSrc_jpg;
+        break;
+      case "hairstyle":
+        this.selectedItem.hairstyle = item.imgSrc_jpg;
+        break;
+      case "background":
+        this.selectedItem.background = item.imgSrc_jpg;
+        break;
+      default:
+    }
+  };
 }
